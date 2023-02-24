@@ -11,12 +11,12 @@
 <body>
     <form action="updateLocation" method="post">
        <pre>
-        Id: <input type="text" name="id" value="${location.id}" readonly=true/>
-        Code: <input type="text" name="code" value="${location.code}"/>
-        Name: <input type="text" name="name" value="${location.name}"/>
+        Id: <input type="text" name="id" value="${location.id}" readonly=true/> <br>
+        Code: <input type="text" name="code" value="${location.code}"/><br>
+        Name: <input type="text" name="name" value="${location.name}"/><br>
         Type: Urban <input type="radio" name="type" value="Urban"${location.type == 'Urban'?'checked':''}/>
               Peri-Urban <input type="radio" name="type" value="Peri-Urban"${location.type == 'Peri-Urban'?'checked':''}/>
-              Rural <input type="radio" name="type" value="Rural"${location.type == 'Rural'?'checked':''}/>
+              Rural <input type="radio" name="type" value="Rural"${location.type == 'Rural'?'checked':''}/><br>
         <input type="submit" value="Update">
       </pre>
     </form>

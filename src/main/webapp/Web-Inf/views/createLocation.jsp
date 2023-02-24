@@ -12,11 +12,15 @@
     <form action="saveLocation" method="post">
        <pre>
         Id: <input type="text" name="id" value=""/>
+        <br>
         Code: <input type="text" name="code" value=""/>
+        <br>
         Name: <input type="text" name="name" value=""/>
+        <br>
         Type: Urban <input type="radio" name="type" value="Urban"/>
               Peri-Urban <input type="radio" name="type" value="Peri-Urban"/>
               Rural <input type="radio" name="type" value="Rural"/>
+              <br>
         <input type="submit" value="Save">
       </pre>
     </form>
