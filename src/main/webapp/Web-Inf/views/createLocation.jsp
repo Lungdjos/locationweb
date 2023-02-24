@@ -14,9 +14,10 @@
         Id: <input type="text" name="id" value=""/>
         Code: <input type="text" name="code" value=""/>
         Name: <input type="text" name="name" value=""/>
-        Type: Urban <input type="radio" name="type" value="URBAN"/>
-              Rural <input type="radio" name="type" value="RURAL"/>
-        <input type="submit" value="save">
+        Type: Urban <input type="radio" name="type" value="Urban"/>
+              Peri-Urban <input type="radio" name="type" value="Peri-Urban"/>
+              Rural <input type="radio" name="type" value="Rural"/>
+        <input type="submit" value="Save">
       </pre>
     </form>
     ${pop_up_msg}

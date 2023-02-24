@@ -11,12 +11,13 @@
 <body>
     <form action="saveLocation" method="post">
        <pre>
-        Id: <input type="text" name="id" value=""/>
-        Code: <input type="text" name="code" value=""/>
-        Name: <input type="text" name="name" value=""/>
-        Type: Urban <input type="radio" name="type" value="URBAN"/>
-              Rural <input type="radio" name="type" value="RURAL"/>
-        <input type="submit" value="save">
+        Id: <input type="text" name="id" value="${location.id}" readonly=true/>
+        Code: <input type="text" name="code" value="${location.code}"/>
+        Name: <input type="text" name="name" value="${location.name}"/>
+        Type: Urban <input type="radio" name="type" value="Urban"${location.type == 'Urban'?'Urban':''}/>
+              Peri-Urban <input type="radio" name="type" value="Peri-Urban"${location.type == 'Peri-Urban'?'Peri-Urban':''}/>
+              Rural <input type="radio" name="type" value="Rural"${location.type == 'Rural'?'Rural':''}/>
+        <input type="submit" value="Update">
       </pre>
     </form>
     ${pop_up_msg}
