@@ -20,5 +20,7 @@
       </pre>
     </form>
     ${pop_up_msg}
+    <br>
+    <a href="showLocations">View All</a>
 </body>
 </html>
