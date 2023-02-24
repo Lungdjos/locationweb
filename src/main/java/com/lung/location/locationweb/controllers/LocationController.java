@@ -28,7 +28,7 @@ public class LocationController {
         Location savedLocation = locationService.saveLocation(location);
         String pop_up_msg = "Location successfully saved with id: "+ savedLocation.getId();
         modelMap.addAttribute("pop_up_msg", pop_up_msg);
-        return "createLocation";
+        return "displayLocations";
     }
 
     // method to show the data in the database
@@ -54,10 +54,20 @@ public class LocationController {
     public String showUpdate(@RequestParam("id")int id, ModelMap modelMap){
         Location location = locationService.findLocationById(id);
         modelMap.addAttribute("location", location);
+        return "updateLocation";
+    }
 
+    // method to save an updated entity
+    @RequestMapping("/updateLocation")
+    public String updateLocation(@ModelAttribute("location")Location location, ModelMap modelMap){
+        locationService.updateLocation(location);
         // pop up msg
         String pop_up_msg = "Location successfully updated with id: "+ location.getId();
         modelMap.addAttribute("pop_up_msg", pop_up_msg);
-        return "updateLocation";
+
+        List<Location> locations = locationService.getAllLocations();
+        modelMap.addAttribute("locations", locations);
+
+        return "displayLocations";
     }
 }
