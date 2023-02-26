@@ -36,8 +36,9 @@ public class LocationController {
         modelMap.addAttribute("pop_up_msg", pop_up_msg);
 
         // sending a mail when the location is saved, to the user
-//        emailUtil.sendEmailString("lthehac@gmail.com", "testmail123@gmail.com", "Location Saved Successfully",
+//        emailUtil.sendEmailString("testmail123@gmail.com", "testmail123@gmail.com", "Location Saved Successfully",
 //                "The location has been saved with the following details" + location.toString());
+
         // unfortunately the above functionality can not be implemented as the host can not be accessed by less secure third-party applications
 
         return "displayLocations";
