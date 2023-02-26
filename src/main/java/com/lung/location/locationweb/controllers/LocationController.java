@@ -2,6 +2,8 @@ package com.lung.location.locationweb.controllers;
 
 import com.lung.location.locationweb.entities.Location;
 import com.lung.location.locationweb.service.LocationService;
+import com.lung.location.locationweb.utils.EmailUtil;
+import jakarta.mail.MessagingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -18,16 +20,25 @@ public class LocationController {
     @Autowired
     LocationService locationService;
 
+    // injecting a mail service
+    @Autowired
+    EmailUtil emailUtil;
+
     // method that returns a jsp page
     @GetMapping("/createLocation")
     public String showCreate(){return "createLocation";}
 
     // method to save an entity
     @RequestMapping("/saveLocation")
-    public String saveLocation(@ModelAttribute("location")Location location, ModelMap modelMap){
+    public String saveLocation(@ModelAttribute("location")Location location, ModelMap modelMap) throws MessagingException {
         Location savedLocation = locationService.saveLocation(location);
         String pop_up_msg = "Location successfully saved with id: "+ savedLocation.getId();
         modelMap.addAttribute("pop_up_msg", pop_up_msg);
+
+        // sending a mail when the location is saved, to the user
+        emailUtil.sendEmailString("lthehac@gmail.com", "testmail123@gmail.com", "Location Saved Successfully",
+                "The location has been saved with the following details" + location.toString());
+
         return "displayLocations";
     }
 
