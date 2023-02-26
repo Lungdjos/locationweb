@@ -1,9 +1,12 @@
 package com.lung.location.locationweb.controllers;
 
 import com.lung.location.locationweb.entities.Location;
+import com.lung.location.locationweb.repos.LocationRepository;
 import com.lung.location.locationweb.service.LocationService;
 import com.lung.location.locationweb.utils.EmailUtil;
+import com.lung.location.locationweb.utils.ReportUtil;
 import jakarta.mail.MessagingException;
+import jakarta.servlet.ServletContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -12,17 +15,28 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.io.IOException;
 import java.util.List;
 
 @Controller
 @RequestMapping("")
 public class LocationController {
+    // injections
+    // repository and the service
+    @Autowired
+    LocationRepository locationRepository;
     @Autowired
     LocationService locationService;
 
-    // injecting a mail service
+    // mail and report utility
     @Autowired
     EmailUtil emailUtil;
+    @Autowired
+    ReportUtil reportUtil;
+
+    // servlet context
+    @Autowired
+    ServletContext servletContext;
 
     // method that returns a jsp page
     @GetMapping("/createLocation")
@@ -85,7 +99,13 @@ public class LocationController {
     }
 
     // generating a report controller method
-    public String generateReport(){
-        return "";
+    @RequestMapping("/generateReport")
+    public String generateReport() throws IOException {
+        // getting the path
+        String path = servletContext.getRealPath("/");
+        List<Object []> data = locationRepository.findTypeAndCountType();
+
+        reportUtil.generatePieChart(path, data);
+        return "locationReport";
     }
 }
