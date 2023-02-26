@@ -83,4 +83,9 @@ public class LocationController {
 
         return "displayLocations";
     }
+
+    // generating a report controller method
+    public String generateReport(){
+        return "";
+    }
 }
