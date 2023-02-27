@@ -55,7 +55,7 @@ public class LocationController {
 
         // unfortunately the above functionality can not be implemented as the host can not be accessed by less secure third-party applications
 
-        return "displayLocations";
+        return "createLocation";
     }
 
     // method to show the data in the database
@@ -103,7 +103,7 @@ public class LocationController {
     public String generateReport() throws IOException {
         // getting the path
         String path = servletContext.getRealPath("/");
-        List<Object []> data = locationRepository.findTypeAndCountType();
+        List<Object[]> data = locationRepository.findTypeAndCountType();
 
         reportUtil.generatePieChart(path, data);
         return "locationReport";

@@ -6,6 +6,7 @@ import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.JFreeChart;
 import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.general.PieDataset;
+import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.io.IOException;
@@ -14,6 +15,7 @@ import java.util.Locale;
 
 import static java.lang.Double.parseDouble;
 
+@Component
 public class ReportUtilImpl implements ReportUtil {
     @Override
     public void generatePieChart(String path, List<Object[]> data) throws IOException {
