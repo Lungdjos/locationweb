@@ -32,4 +32,6 @@
         </c:forEach>
     </table>
         <a href="createLocation">Add Location</a>
+        <br>
+        <a href="locationReport">View Location Report</a>
 </body>

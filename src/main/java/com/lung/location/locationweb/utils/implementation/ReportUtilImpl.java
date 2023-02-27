@@ -10,6 +10,7 @@ import org.jfree.data.general.PieDataset;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Locale;
 
 import static java.lang.Double.parseDouble;
 
@@ -18,6 +19,9 @@ public class ReportUtilImpl implements ReportUtil {
     public void generatePieChart(String path, List<Object[]> data) throws IOException {
         // creating a pie chart dataset instance from jfree charts
         DefaultPieDataset dataset = new DefaultPieDataset();
+
+        // creating an instance of the locale class
+        Locale locale = new Locale("en", "ZM");
 
         // iterating through the list of object
         for (Object[] objects: data){
@@ -31,10 +35,10 @@ public class ReportUtilImpl implements ReportUtil {
         }
 
         // creating a Jfree chart variable
-        JFreeChart chart = ChartFactory.createPieChart3D("Location Reports", dataset);
+        JFreeChart chart = ChartFactory.createPieChart3D("Location Reports", dataset, true, true, locale);
 
         // setting the format, and orientation of the chart using the chart util
-        ChartUtilities.saveChartAsJPEG(new File(path), chart, 350, 350);
+        ChartUtilities.saveChartAsJPEG(new File(path+"/pieChart.jpeg"), chart, 350, 350);
 
     }
 }
