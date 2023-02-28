@@ -38,4 +38,10 @@ public class LocationRESTController {
     public void deleteLocation(@PathVariable("id") int id){
         locationRepository.deleteById(id);
     }
+
+    // method that displays one location
+    @GetMapping("/{id}")
+    public Location getLocation(@PathVariable("id") int id){
+        return locationRepository.findById(id).orElseThrow();
+    }
 }
