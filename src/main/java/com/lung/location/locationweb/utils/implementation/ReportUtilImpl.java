@@ -37,7 +37,7 @@ public class ReportUtilImpl implements ReportUtil {
         }
 
         // creating a Jfree chart variable
-        JFreeChart chart = ChartFactory.createPieChart3D("Location Reports", dataset, true, true, locale);
+        JFreeChart chart = ChartFactory.createPieChart3D("Location Reports", dataset);
 
         // setting the format, and orientation of the chart using the chart util
         ChartUtilities.saveChartAsJPEG(new File(path+"/pieChart.jpeg"), chart, 350, 350);

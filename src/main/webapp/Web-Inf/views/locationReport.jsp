@@ -19,6 +19,6 @@
 </head>
 <body>
     <h3>This is the Location Report of the Available Locations</h3>
-    <img src="/pieChart.jpeg" alt="Location Report"/>
+    <img src="pieChart.jpeg" alt="Location Report"/>
 </body>
 </html>

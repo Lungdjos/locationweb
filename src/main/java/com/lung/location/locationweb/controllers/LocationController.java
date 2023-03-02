@@ -104,7 +104,6 @@ public class LocationController {
         // getting the path
         String path = servletContext.getRealPath("/");
         List<Object[]> data = locationRepository.findTypeAndCountType();
-
         reportUtil.generatePieChart(path, data);
         return "locationReport";
     }
